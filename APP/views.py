@@ -5,7 +5,8 @@ from django.shortcuts import render, redirect
 from .models import Projekt
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
-from django.contrib.auth.models import Permission, User
+from django.contrib.admin.views.decorators import staff_member_required
+from django.http import HttpResponse
 
 # Create your views here.
 def home_view(request, *args, **kwargs):
@@ -39,18 +40,14 @@ def logout_view(request):
     logout(request)
     return redirect('login')
 
+@staff_member_required(login_url="logout")
 def staff_view(request):
-    if request.user.is_authenticated:
-        context = {}
-        return render(request, 'staff.html', context)
-    else:
-        return redirect('login')
-        
+    context = {}
+    return render(request, 'staff.html', context)
+
+@staff_member_required(login_url="logout")
 def profile_view(request):
-    if request.user.is_authenticated:
-        context = {}
-        return render(request, 'profile.html', context)
-    else:
-        return redirect('login')
+    context = {}
+    return render(request, 'profile.html', context)
 
 

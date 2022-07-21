@@ -34,16 +34,12 @@
                     <li class="nav_li"><a href="{{ domain }}/">Szolgáltatások</a></li>
                     <li class="nav_li"><a href="{{ domain }}/">Rólunk</a></li>
                     <li class="nav_li"><a href="{{ domain }}/">Kapcsolat</a></li>
-                    {% if user.is_staff %}
                     <li class="nav_li"><a href="{{ domain }}/admin">Admin</a></li>
-                    {% endif %}
                     
                 </ul>
             </div>
             <div id="navright">
-                {% if user.is_staff %}
                 <span>Üdv <a href="{{ domain }}/profil"> {{request.user}}</span>!</a>
-                {% endif %}
             </div>
         </nav>
         <div id="main">
