@@ -51,7 +51,6 @@ ol, ul {
     left: 50%;
     margin-left: -50vw;
     right: auto;
-    margin-top: -4rem;
     height: 24rem;
 }
 #image img{
@@ -67,6 +66,15 @@ nav{
     width: 100%;
     background: #2b2b2b;
     color: white;
+    position: fixed;
+    z-index: 10;
+    display: grid;
+    grid-template-columns: 20% 60% 20%;
+}
+#navleft{
+    display: flex;
+    margin: auto;
+    flex-direction: row;
 }
 #navdiv{
     width: 700px;
@@ -149,9 +157,7 @@ hr{
     padding: 3rem;
     
 }
-.projektflex{
 
-}
 .grid60_40 img{
     height: auto;
     max-height: 16rem;
@@ -190,4 +196,6 @@ hr{
 h2{
     margin-top: 0px;
 }
-
+#logo{
+    width: 60px;
+}
