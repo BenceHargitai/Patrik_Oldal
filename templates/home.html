@@ -1,0 +1,107 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Document</title>
+
+       <!-- Jquery -->
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+       <!-- CSS -->
+       <link rel="stylesheet" href="{% static 'css/main.css' %}" />   
+
+       <!-- Javascript -->
+        <script src="{% static 'js/global.js' %}"></script>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@500&family=Cormorant+SC:wght@700&family=Edu+NSW+ACT+Foundation:wght@500&family=Roboto+Mono:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="wrapper">
+        {% csrf_token %} 
+        <nav>
+            <div id="navdiv">
+                <ul id="nav_ul">
+                    <li class="nav_li">Főoldal</li>
+                    <li class="nav_li">Szolgáltatások</li>
+                    <li class="nav_li">Rólunk</li>
+                    <li class="nav_li">Kapcsolat</li>
+                    
+                </ul>
+            </div>
+        </nav>
+        <div id="main">
+
+            <div class="inner">
+                <div id="image">
+                        <img src="https://assets.architecturaldigest.in/photos/60084bc8d0435267a8df97f8/16:9/w_2560%2Cc_limit/The-Drawing-Studio-mumbai-interior-design_2-1366x768.jpg" alt="">
+                </div>
+                <div class="nev">
+                    <div class="belsonev">
+                        <h1>Polar Design</h1>
+                        <p>Lorem ipsum dolor sit amet   </p>
+
+                    </div>
+                </div>
+                <div class="sectionjelzo">
+                    <div class="sectionbelso">
+                            Projektek
+                    </div>
+                </div>
+                <hr id="lehuzo">
+                <div id="projektcontainer">
+                    <div class="projektbelso">
+                        <div class="projektflex">
+                            <ul>
+                                {% for item in projects %}
+                                {% if forloop.counter|divisibleby:"2" %}
+
+                                <li>
+                                    <div class="grid40_60">
+                                        <div class="leiras">
+                                            <h2>{{ item.név }}</h2>
+                                            <p>{{ item.leiras }}</p>
+                                        </div>
+                                        <img src="{{ item.url }}" alt="">
+                                    </div>
+                                    
+                                </li>
+                                {% else %}
+                                <li>
+                                    <div class="grid60_40">
+                                        <img src="{{ item.url }}" alt=""> 
+                                        <div class="leiras">
+                                            <h2>{{ item.név }}</h2>
+                                            <p>{{ item.leiras }}</p>
+                                         
+                                        </div>
+                                    </div>
+                                </li>
+                                {% endif %}
+                                {% endfor %}
+                                <!-- <li>
+                                    <div class="grid40_60">
+                                        <div class="leiras">
+                                            <h2>Elízium</h2>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At amet assumenda, modi necessitatibus quia error! Nulla, ducimus enim, blanditiis dolorum velit itaque ullam ut tenetur minus magni dolore, voluptate modi!</p>
+                                        </div>
+                                        <img src="https://static.wixstatic.com/media/261837_99551175bead4d64827a60011462cf71~mv2.jpg/v1/crop/x_137,y_0,w_5907,h_3415/fill/w_719,h_414,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/_DSF6066_JPG.jpg" alt="">
+                                    </div>
+                                </li> -->
+                                
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+                
+        </div>
+    </div>
+</body>
+</html>
