@@ -71,11 +71,12 @@ nav{
     display: grid;
     grid-template-columns: 20% 60% 20%;
 }
-#navleft{
+#navleft, #navright{
     display: flex;
     margin: auto;
     flex-direction: row;
 }
+
 #navdiv{
     width: 700px;
     margin: auto;

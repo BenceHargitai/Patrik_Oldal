@@ -35,11 +35,16 @@
                     <li class="nav_li">Szolgáltatások</li>
                     <li class="nav_li">Rólunk</li>
                     <li class="nav_li">Kapcsolat</li>
+                    {% if user.is_staff %}
+                    <li class="nav_li">Admin</li>
+                    {% endif %}
                     
                 </ul>
             </div>
             <div id="navright">
-               
+                {% if user.is_staff %}
+                Üdv {{request.user}}!
+                {% endif %}
             </div>
         </nav>
         <div id="main">
