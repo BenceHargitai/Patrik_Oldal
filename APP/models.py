@@ -2,11 +2,12 @@ import imghdr
 from nturl2path import url2pathname
 from django.db import models
 from django.shortcuts import render
+from ckeditor.fields import RichTextField
 # Create your models here.
 
 class Projekt(models.Model):
     név = models.CharField(max_length=30)
-    leiras = models.CharField(max_length=300)
+    leiras = RichTextField(blank=True,null=True)
     public = models.BooleanField()
     img = models.ImageField()
     url = models.URLField()

@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- Jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />   
+
+    <!-- Javascript -->
+     <script src="{% static 'js/global.js' %}"></script>
+
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Albert+Sans:wght@500&family=Cormorant+SC:wght@700&family=Edu+NSW+ACT+Foundation:wght@500&family=Roboto+Mono:wght@300&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="wrapper">
+        {% csrf_token %} 
+        <nav>
+            <div id="navleft">
+                <img src="https://dieselpunkcore.com/wp-content/uploads/2014/06/logo-placeholder.png" alt="" id="logo">
+                <div style="margin:auto">Polar Design</div>
+            </div>
+            <div id="navdiv">
+                <ul id="nav_ul">
+                    <li class="nav_li"><a href="{{ domain }}/">Főoldal</a></li>
+                    <li class="nav_li"><a href="{{ domain }}/">Szolgáltatások</a></li>
+                    <li class="nav_li"><a href="{{ domain }}/">Rólunk</a></li>
+                    <li class="nav_li"><a href="{{ domain }}/">Kapcsolat</a></li>
+                    {% if user.is_staff %}
+                    <li class="nav_li"><a href="{{ domain }}/admin">Admin</a></li>
+                    {% endif %}
+                    
+                </ul>
+            </div>
+            <div id="navright">
+                {% if user.is_staff %}
+                <span>Üdv <a href="{{ domain }}/profil"> {{request.user}}</span>!</a>
+                {% endif %}
+            </div>
+        </nav>
+        <div id="main">
+
+            <div class="inner">
+            </div>
+        </div>
+    </div>
+</body>
+</html>

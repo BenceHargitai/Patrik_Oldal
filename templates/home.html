@@ -31,19 +31,19 @@
             </div>
             <div id="navdiv">
                 <ul id="nav_ul">
-                    <li class="nav_li">Főoldal</li>
-                    <li class="nav_li">Szolgáltatások</li>
-                    <li class="nav_li">Rólunk</li>
-                    <li class="nav_li">Kapcsolat</li>
+                    <li class="nav_li"><a href="{{ domain }}/">Főoldal</a></li>
+                    <li class="nav_li"><a href="{{ domain }}/">Szolgáltatások</a></li>
+                    <li class="nav_li"><a href="{{ domain }}/">Rólunk</a></li>
+                    <li class="nav_li"><a href="{{ domain }}/">Kapcsolat</a></li>
                     {% if user.is_staff %}
-                    <li class="nav_li">Admin</li>
+                    <li class="nav_li"><a href="{{ domain }}/admin">Admin</a></li>
                     {% endif %}
                     
                 </ul>
             </div>
             <div id="navright">
                 {% if user.is_staff %}
-                Üdv {{request.user}}!
+                <span>Üdv <a href="{{ domain }}/profil"> {{request.user}}</span>!</a>
                 {% endif %}
             </div>
         </nav>
@@ -77,19 +77,24 @@
                                     <div class="grid40_60">
                                         <div class="leiras">
                                             <h2>{{ item.név }}</h2>
-                                            <p>{{ item.leiras }}</p>
+                                            <p>{{ item.leiras|safe }}</p>
                                         </div>
-                                        <img src="{{ item.url }}" alt="">
+                                        <div class="zoom">
+                                            <img src="{{ item.url }}" alt="">
+
+                                        </div>
                                     </div>
                                     
                                 </li>
                                 {% else %}
                                 <li>
                                     <div class="grid60_40">
-                                        <img src="{{ item.url }}" alt=""> 
+                                        <div class="zoom">
+                                            <img src="{{ item.url }}" alt=""> 
+                                        </div>
                                         <div class="leiras">
                                             <h2>{{ item.név }}</h2>
-                                            <p>{{ item.leiras }}</p>
+                                            <p>{{ item.leiras|safe }}</p>
                                          
                                         </div>
                                     </div>

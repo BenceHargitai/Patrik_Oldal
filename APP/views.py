@@ -39,5 +39,18 @@ def logout_view(request):
     logout(request)
     return redirect('login')
 
+def staff_view(request):
+    if request.user.is_authenticated:
+        context = {}
+        return render(request, 'staff.html', context)
+    else:
+        return redirect('login')
+        
+def profile_view(request):
+    if request.user.is_authenticated:
+        context = {}
+        return render(request, 'profile.html', context)
+    else:
+        return redirect('login')
 
 
