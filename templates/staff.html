@@ -12,6 +12,7 @@
 
     <!-- CSS -->
     <link rel="stylesheet" href="{% static 'css/main.css' %}" />   
+    <link rel="stylesheet" href="{% static 'css/staff.css' %}" />   
 
     <!-- Javascript -->
      <script src="{% static 'js/global.js' %}"></script>
@@ -45,6 +46,20 @@
         <div id="main">
 
             <div class="inner">
+                <div id="image">
+                    <img src="https://assets.architecturaldigest.in/photos/60084bc8d0435267a8df97f8/16:9/w_2560%2Cc_limit/The-Drawing-Studio-mumbai-interior-design_2-1366x768.jpg" alt="">
+                </div>
+                <div class="projektadmin">
+                    <div class="prokektlista">
+                        {% for projekt in projects %}
+                        <div> {{projekt.név}} </div>
+                        {% endfor %}
+                    </div>
+                    <div class="projektszerk"></div>
+                </div>
+
+
+                    
             </div>
         </div>
     </div>

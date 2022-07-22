@@ -6,7 +6,6 @@ from .models import Projekt
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.admin.views.decorators import staff_member_required
-from django.http import HttpResponse
 
 # Create your views here.
 def home_view(request, *args, **kwargs):
@@ -42,8 +41,10 @@ def logout_view(request):
 
 @staff_member_required(login_url="logout")
 def staff_view(request):
-    context = {}
-    return render(request, 'staff.html', context)
+    projects =Projekt.objects.all()
+    return render(request, 'staff.html', {'projects' : projects}) 
+
+
 
 @staff_member_required(login_url="logout")
 def profile_view(request):

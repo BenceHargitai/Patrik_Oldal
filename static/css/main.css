@@ -162,7 +162,10 @@ hr{
     padding: 3rem;
     
 }
-
+.grid60_40:hover, .grid40_60:hover
+{
+    cursor: pointer;
+}
 .grid60_40 img{
     height: auto;
     max-height: 16rem;
