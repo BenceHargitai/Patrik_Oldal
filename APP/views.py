@@ -42,7 +42,7 @@ def logout_view(request):
 @staff_member_required(login_url="logout")
 def staff_view(request):
     projects =Projekt.objects.all()
-    return render(request, 'staff.html', {'projects' : projects}) 
+    return render(request, 'projekt.html', {'projects' : projects}) 
 
 
 

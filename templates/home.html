@@ -69,47 +69,19 @@
                 <div id="projektcontainer">
                     <div class="projektbelso">
                         <div class="projektflex">
-                            <ul>
+                            <ul id="grid">
                                 {% for item in projects %}
-                                {% if forloop.counter|divisibleby:"2" %}
-
                                 <li>
-                                    <div class="grid40_60">
-                                        <div class="leiras">
-                                            <h2>{{ item.név }}</h2>
-                                            <p>{{ item.leiras|safe }}</p>
-                                        </div>
-                                        <div class="zoom">
-                                            <img src="{{ item.url }}" alt="">
-
-                                        </div>
-                                    </div>
-                                    
-                                </li>
-                                {% else %}
-                                <li>
-                                    <div class="grid60_40">
-                                        <div class="zoom">
-                                            <img src="{{ item.url }}" alt=""> 
-                                        </div>
-                                        <div class="leiras">
-                                            <h2>{{ item.név }}</h2>
-                                            <p>{{ item.leiras|safe }}</p>
-                                         
+                                    <div class="kepitem">
+                                        <div style="background-image: url(' {{item.url}}');" class="keptarto">
+                                            <div class="desc">
+                                                {{item.név}}
+                                                
+                                              </div>
                                         </div>
                                     </div>
                                 </li>
-                                {% endif %}
                                 {% endfor %}
-                                <!-- <li>
-                                    <div class="grid40_60">
-                                        <div class="leiras">
-                                            <h2>Elízium</h2>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. At amet assumenda, modi necessitatibus quia error! Nulla, ducimus enim, blanditiis dolorum velit itaque ullam ut tenetur minus magni dolore, voluptate modi!</p>
-                                        </div>
-                                        <img src="https://static.wixstatic.com/media/261837_99551175bead4d64827a60011462cf71~mv2.jpg/v1/crop/x_137,y_0,w_5907,h_3415/fill/w_719,h_414,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/_DSF6066_JPG.jpg" alt="">
-                                    </div>
-                                </li> -->
                                 
                             </ul>
 
