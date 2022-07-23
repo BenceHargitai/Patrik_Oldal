@@ -1,11 +1,13 @@
+from ast import For
 from cmath import log
 from multiprocessing import context
 from shutil import unregister_unpack_format
 from django.shortcuts import render, redirect
-from .models import Projekt
+from .models import Projekt, Kapcsolo, Kepek
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.admin.views.decorators import staff_member_required
+from django.http import HttpRequest, HttpResponse
 
 # Create your views here.
 def home_view(request, *args, **kwargs):
@@ -51,4 +53,21 @@ def profile_view(request):
     context = {}
     return render(request, 'profile.html', context)
 
+
+def projekt_view(request:HttpRequest, név:str) -> HttpResponse:
+    projekt = Projekt.objects.filter(név=név).first()
+    kategoriak = Kapcsolo.objects.filter(key=projekt)
+
+    if projekt == None:
+        return HttpResponse("Nincs ilyen projekt", status=404)
+    if (not request.user.is_staff and not projekt.public):
+        return HttpResponse(f"Nincs jogosultságod megnézni ezt a projektet, mert nem vagy admin.", status=403)
+    
+    template = "projekt.html"
+    context = {
+        'projekt': projekt,
+        'kategoria' : kategoriak,
+
+    }
+    return render(request, template, context)
 

@@ -43,7 +43,9 @@
                 </ul>
             </div>
             <div id="navright">
-                <span>Üdv <a href="{{ domain }}/profil"> {{request.user}}</span>!</a>
+                {% if user.is_staff %}
+                <span> Üdv <a href="{{ domain }}/profil"> {{request.user}}</span>!</a>
+                {% endif %}
             </div>
         </nav>
         
@@ -52,13 +54,13 @@
             <div class="inner">
                 <div class="projektcimcontainer">
                     <div class="projektcim">
-                        <h1>Elízium</h1>
+                        <h1>{{projekt.név}}</h1>
                         <hr class="cimvalaszto">
-                        <p class="projektleiras">
-                            A hely szellemét tisztelő, mégis kortárs ház a Balaton tradicionális hangulatába illően. Ez volt a cél ennek a jó hangulatú, gyönyörű panorámával rendelkező családi otthonnak a megtervezésekor.
+                        <div class="projektleiras">
+                            {{projekt.leiras|safe}}
 
-                            <br><br> Gyalogosan a háromszintes ház középső szintjén érkezünk meg, drámaian nagy megnyitással és terasszal, s az ezt megnyugtató, a környékre jellemző hagyományos építészeti karakterhez is illő oromfalas tömeggel találkozva. Az épület 2 fő traktusból áll, melyet középen egy nyaktag köt össze, ahol a megérkezés és az eltérő szintekre való eljutás lehetősége adódik. Racionális szerkesztést jól tükrözi ez a rendszer, hiszen így zavartalanul indulhatunk a közösségi terek, a földszinti vagy az emeleti privát zóna felé, akár a garázsból érkezünk fel, akár az udvarról nyitunk be a főbejáraton. A pincében garázs, tárolók és rekreációs funkciók kaptak helyet. A fölszinten a nagyvonalúan szerkesztett, tágas terekkel létrehozott közösségi helyiségek illetve privát szobák, az emeleten pedig a legintimebb lakrész található saját panorámaterasszal. A telek- és terepadottságok jó kihasználásának példáját az épület alatti garázs mutatja, mely pozíciójánál fogva szépen simul bele a terepbe. A társasági összejövetelek központját és a megnyugtató pihenést lehetőségét egy hatalmas terasz adja a déli oldalon remek panorámával, külön lezárható nyárikonyhával. Az elvonulás élményét az összességében a visszafogott, helyi hangulatba illő, mégis kortárs tömegű épület teszi lehetővé.</p>
-                            
+                        </div>
+                           
                             <a href="#zoomies" id="tudjmeg">
                             <div class="projekttobb">
                                 <p id="tobb"> Tudj meg többet</p>
@@ -82,9 +84,14 @@
                             </div>
                         </div>
                         <div class="kepgrid">
-                            <div class="kep" style="background-image:url(http://www.dekon.hu/storage/app/uploads/public/8e1/890/329/thumb__1920_1080_0_0_auto.jpg)"></div>
+                            {% for kep in kategoria.kepei %}
+                            <div>asd</div>
+                            {% endfor %}
+
+                                
+                            <!-- <div class="kep" style="background-image:url(http://www.dekon.hu/storage/app/uploads/public/8e1/890/329/thumb__1920_1080_0_0_auto.jpg)"></div>
                             <div class="kep" style="background-image:url(https://static.wixstatic.com/media/261837_94fbddf193a448d097da39d3472d43ad~mv2.jpg/v1/fit/w_745,h_783,q_90/261837_94fbddf193a448d097da39d3472d43ad~mv2.webp)"></div>
-                            <div class="kep kepnagy" style="background-image:url(http://www.dekon.hu/storage/app/uploads/public/f51/d38/01c/thumb__1920_1080_0_0_auto.jpg)"></div>
+                            <div class="kep kepnagy" style="background-image:url(http://www.dekon.hu/storage/app/uploads/public/f51/d38/01c/thumb__1920_1080_0_0_auto.jpg)"></div> -->
                 
                         </div>
                     </div>

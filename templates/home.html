@@ -1,4 +1,5 @@
 {% load static %}
+{% load filter %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -71,18 +72,37 @@
                         <div class="projektflex">
                             <ul id="grid">
                                 {% for item in projects %}
+                                {% if item.public %}
                                 <li>
-                                    <div class="kepitem">
-                                        <div style="background-image: url(' {{item.url}}');" class="keptarto">
-                                            <div class="desc">
-                                                {{item.név}}
-                                                
-                                              </div>
+                                    <a href="/projekt/{{item.név}}">
+                                        <div class="kepitem">
+                                            <div style="background-image: url(' {{item.url}}');" class="keptarto">
+                                                <div class="desc">
+                                                    {{item.név}}
+                                                </div>
+                                            </div>
                                         </div>
-                                    </div>
+                                    </a>
                                 </li>
+                                {% endif %}
                                 {% endfor %}
                                 
+                                {% for item in projects %}
+                                {% if item.public|is_false %}
+                                <li>
+                                    <a href="/projekt/{{item.név}}">
+                                        <div class="kepitem">
+                                            <div style="background-image: url(' {{item.url}}');" class="keptarto private">
+                                                <div class="desc">
+                                                    {{item.név}}
+                                                    <br>(Nem nyilvános)
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </li>
+                                {% endif %}
+                                {% endfor %}
                             </ul>
 
                         </div>

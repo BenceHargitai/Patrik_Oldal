@@ -224,6 +224,10 @@ hr{
     justify-content: center;
     font-size: 22px;
   }
+.private{
+    filter: grayscale(1);
+
+}
 .kepnev{
     margin: auto;
     height: 100%;

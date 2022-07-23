@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from APP.views import home_view, login_view, logout_view, staff_view, profile_view
+from APP.views import home_view, login_view, logout_view, staff_view, profile_view, projekt_view
 
 urlpatterns = [
     path('admin_django/', admin.site.urls),
@@ -27,4 +27,5 @@ urlpatterns = [
     path('kapcsolat/',home_view, name="kapcsolat"),
     path('admin/',staff_view, name="admin"),
     path('profil/',profile_view, name="profil"),
+    path('projekt/<str:név>/', projekt_view),
 ]
