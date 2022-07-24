@@ -29,6 +29,7 @@
             background-image: url(data:image/svg+xml;charset=utf8,%3Csvg%20viewBox%3D%220%200%20512%20512%22%20width%3D%22512%22%20height%3D%22512%22%20version%3D%221.1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%3Cfilter%20id%3D%22noise%22%3E%3CfeTurbulence%20type%3D%22fractalNoise%22%20baseFrequency%3D%220.875%22%20result%3D%22noise%22%20%2F%3E%3CfeColorMatrix%20type%3D%22matrix%22%20values%3D%220.99609375%200%200%200%200%200%200.99609375%200%200%200%200%200%200.99609375%200%200%200%200%200%200.25%200%22%20%2F%3E%3C%2Ffilter%3E%3Crect%20filter%3D%22url%28%23noise%29%22%20x%3D%220%22%20y%3D%220%22%20width%3D%22512%22%20height%3D%22512%22%20fill%3D%22transparent%22%20opacity%3D%221%22%20%2F%3E%3C%2Fsvg%3E), linear-gradient(146deg, rgba(255,239,219,0.31) 0%, rgba(166,223,255,0.141) 100%), url({{projekt.url}})!important;
         }
     </style>
+
 </head>
 <body>
     <div id="wrapper">
@@ -61,26 +62,40 @@
             <div id="adminbar">
                 <div class="tools" onclick="modositas()">Projekt szerkesztése</div>
             </div>
-            <form method="POST">
+            <form action="." id="form" method="POST">
             {{ form.media }}
+            {% csrf_token %}
                 <div id="modositoform">
                     <div class="modositas">
                         <div class="modositobelso">
                             <div class="modositobelso_belso">
                                 
                                 <label>Cím</label>
-                                <input type="text" id="ujcim" value="{{projekt.név}}">
+                                <input type="text" id="ujcim" value="{{projekt.név}}" name="cim">
                                 <label>Leírás</label>
                                 <div id="editor"></div>
                                 <script>
+                                    let theEditor;
                                     ClassicEditor
-                                        .create( document.querySelector( '#editor' ) )
-                                        .catch( error => {
-                                            console.error( error );
-                                        } );
+                                    .create(document.querySelector('#editor'))
+                                    .then(editor => {
+                                        theEditor = editor;
+                                    })
+                                    .catch(error => {
+                                        console.error(error);
+                                    });
+                                    function getDataFromTheEditor() {
+                                        return theEditor.getData();
+                                    }
+
                                 </script>
+                                <input type="hidden" value="" id="leiras" name="leiras">
                                 <label>Kép</label>
-                                <input type="url" id="ujkep" value="{{projekt.url}}">
+                                <input type="url" id="ujkep" value="{{projekt.url}}" name="url">
+                                <div class="buttonflex">
+                                    <div class="projekttobb bezar alsogomb" onclick="bezar()">Mégse</div>
+                                    <div class="projekttobb ment alsogomb" onclick="mentes()">Mentés</div>
+                                </div>
                             </div>
                         </div>
                     </div>

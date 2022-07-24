@@ -23,6 +23,20 @@ function modositas(){
   $('#modositoform').first().css('pointer-events','auto');
 
 }
-window.addEventListener('load', (event) => {
-  
-});
+function bezar(){
+  $('#modositoform').first().css('display','none');
+  $('body').first().css('pointer-events','auto');
+  $('body').first().css('overflow','auto');
+  $('#modositoform').first().css('pointer-events','hidden');
+}
+function mentes(){
+  let value = getDataFromTheEditor();
+  $('input#leiras').val(value)
+  document.getElementById("form").submit();
+}
+
+window.addEventListener('load', function () {
+ if ($('.projektleiras p')[0] != undefined )
+  theEditor.setData($('.projektleiras p')[0].innerHTML);  
+})
+

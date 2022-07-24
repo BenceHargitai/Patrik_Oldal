@@ -17,6 +17,9 @@ a{
  text-decoration: none;   
  color:white ;
 }
+#navleft div{
+    font-size: 20px;
+}
 #wrapper{
     align-items: center;
     display: flex;

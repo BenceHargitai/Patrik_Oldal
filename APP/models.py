@@ -11,8 +11,8 @@ class Projekt(models.Model):
     név = models.CharField(max_length=30)
     leiras = RichTextField(blank=True,null=True)
     public = models.BooleanField()
-    img = models.ImageField()
-    url = models.URLField()
+    img = models.ImageField(blank=True)
+    url = models.URLField(blank=True)
 
     class Meta:
         verbose_name = ("Projekt")

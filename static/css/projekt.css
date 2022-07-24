@@ -35,7 +35,7 @@ body:before{
 }
 .tools{
     margin: auto;
-    line-height: 1.5rem;
+    line-height: 2rem;
     display: flex;
     vertical-align: middle;
     font-size: 1em;
@@ -43,13 +43,18 @@ body:before{
     border-radius: 2rem;
     align-items: center;
     justify-content: center;
-    /* flex-direction: column; */
-    /* border: solid 4px #ffffff; */
+    border: solid 4px #ff886e;
     margin-bottom: 8px;
     width: 100%;
     padding: 10px;
+    background: transparent;
+    color: white;
+    transition: color 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
+}
+.tools:hover{
+    border: solid 4px white;
+    background-color: #FF886E;
     color: black;
-    background: #ff886e;
 }
 .modositas{
     display: flex;
@@ -259,6 +264,8 @@ h1{
 .locked{
     overflow-y: hidden;
 }
+
+
 .ck-rounded-corners .ck.ck-editor__main>.ck-editor__editable, .ck.ck-editor__main>.ck-editor__editable.ck-rounded-corners {
     height: 200px!important;
     border-bottom-left-radius: 0.4rem!important;
@@ -282,6 +289,27 @@ h1{
     border: 2px solid #ff886e!important;
 
     border-radius: 0.475rem;
+}
+
+.buttonflex{
+    margin-top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-flow: row wrap;
+    gap: 25px;
+}
+.alsogomb{
+    padding: 0px;
+    margin: 0;
+    height: 47px;
+    width: 113px;
+}
+.ment:hover{
+    border: solid 4px transparent;
+}
+.bezar:hover{
+    border: solid 4px transparent;
 }
 .overlay {
     position: fixed;

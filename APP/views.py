@@ -3,11 +3,14 @@ from cmath import log
 from multiprocessing import context
 from shutil import unregister_unpack_format
 from django.shortcuts import render, redirect
+from django.urls import is_valid_path
 from .models import Projekt, Kapcsolo, Kepek
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.admin.views.decorators import staff_member_required
 from django.http import HttpRequest, HttpResponse
+from .forms import EditForm
+
 
 # Create your views here.
 def home_view(request, *args, **kwargs):
@@ -67,9 +70,17 @@ def projekt_view(request:HttpRequest, név:str) -> HttpResponse:
     context = {
         'projekt': projekt,
         'kategoriak' : kategoriak,
-        'count' : kategoriak.count
+        'count' : kategoriak.count,
+        'form' : EditForm()
 
     }
+    if request.method =="POST":
+        cim = request.POST.get("cim")
+        leiras = request.POST.get("leiras")
+        url = request.POST.get("url")
+        Projekt.objects.filter(név=név).update(név=cim,leiras=leiras,url = url)
+        return redirect('home')
+
 
     return render(request, template, context)
 
