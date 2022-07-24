@@ -44,8 +44,7 @@ class Kapcsolo(models.Model):
         
     @property
     def kepei(self):
-        return list(Kepek.objects.filter(key = self))
-
+        return Kepek.objects.filter(key = self)
     
 
 class Kepek(models.Model):

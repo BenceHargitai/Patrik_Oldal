@@ -66,8 +66,10 @@ def projekt_view(request:HttpRequest, név:str) -> HttpResponse:
     template = "projekt.html"
     context = {
         'projekt': projekt,
-        'kategoria' : kategoriak,
+        'kategoriak' : kategoriak,
+        'count' : kategoriak.count
 
     }
+
     return render(request, template, context)
 
