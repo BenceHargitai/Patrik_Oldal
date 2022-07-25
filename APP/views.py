@@ -2,14 +2,16 @@ from ast import For
 from cmath import log
 from multiprocessing import context
 from shutil import unregister_unpack_format
+from wsgiref.util import request_uri
 from django.shortcuts import render, redirect
 from django.urls import is_valid_path
 from .models import Projekt, Kapcsolo, Kepek
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.admin.views.decorators import staff_member_required
-from django.http import HttpRequest, HttpResponse
+from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
 from .forms import EditForm
+import time
 
 
 # Create your views here.
@@ -75,12 +77,15 @@ def projekt_view(request:HttpRequest, név:str) -> HttpResponse:
 
     }
     if request.method =="POST":
+        regicim = request.path_info.split('/')[2]
         cim = request.POST.get("cim")
         leiras = request.POST.get("leiras")
         url = request.POST.get("url")
         Projekt.objects.filter(név=név).update(név=cim,leiras=leiras,url = url)
-        return redirect('home')
-
+        if regicim!=cim:
+            return HttpResponseRedirect(f'/projekt/{cim}/')
+        else:
+            return HttpResponseRedirect(request.path_info)
 
     return render(request, template, context)
 

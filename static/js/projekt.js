@@ -31,12 +31,8 @@ function bezar(){
 }
 function mentes(){
   let value = getDataFromTheEditor();
-  $('input#leiras').val(value)
+  $('input#leiras').val(value);
   document.getElementById("form").submit();
 }
 
-window.addEventListener('load', function () {
- if ($('.projektleiras p')[0] != undefined )
-  theEditor.setData($('.projektleiras p')[0].innerHTML);  
-})
 

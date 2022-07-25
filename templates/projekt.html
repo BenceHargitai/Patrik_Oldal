@@ -80,11 +80,13 @@
                                     .create(document.querySelector('#editor'))
                                     .then(editor => {
                                         theEditor = editor;
+                                        theEditor.setData("{{projekt.leiras|safe}}");
                                     })
                                     .catch(error => {
                                         console.error(error);
                                     });
-                                    function getDataFromTheEditor() {
+                                    function getDataFromTheEditor() 
+                                    {
                                         return theEditor.getData();
                                     }
 
