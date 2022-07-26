@@ -16,7 +16,10 @@
        <link rel="stylesheet" href="{% static 'css/main.css' %}" />   
 
        <!-- Javascript -->
-        <script src="{% static 'js/global.js' %}"></script>
+    <script src="{% static 'js/global.js' %}"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&family=Red+Hat+Display:wght@300;400&display=swap" rel="stylesheet"
         
 </head>
 <body>
@@ -24,13 +27,13 @@
         {% csrf_token %} 
         <nav>
             <div id="navleft">
-                <div style="margin:auto">Polar Design</div>
+                <div>Polar Design</div>
             </div>
             <div id="navdiv">
                 <ul id="nav_ul">
                     <li class="nav_li"><a href="{{ domain }}/">Főoldal</a></li>
+                    <li class="nav_li"><a href="{{ domain }}/portfolio">Portfolio</a></li>
                     <li class="nav_li"><a href="{{ domain }}/">Szolgáltatások</a></li>
-                    <li class="nav_li"><a href="{{ domain }}/">Rólunk</a></li>
                     <li class="nav_li"><a href="{{ domain }}/">Kapcsolat</a></li>
                     {% if user.is_staff %}
                     <li class="nav_li"><a href="{{ domain }}/admin">Admin</a></li>
@@ -50,19 +53,50 @@
                 <div id="image">
                         <img src="../static/images/bg.png" alt="">
                 </div>
-                <div class="nev">
+                <section id="section1">
+                    <div class="section_cim">
+                        <h1>Rólunk</h1>
+                    </div>
+                    <hr>
+                    <div class="section_belso">
+                        <div class="section_belso_belso">
+                            
+                            {% for item in topics %}
+                            <div class="section_belso_cim"><h2>{{item.kategoria}}</h2></div>
+                            <div class="section_belso_szoveg">
+                                <p>{{item.text|safe}}</p>
+                             </div> 
+                            {% endfor %}
+                                
+
+                           
+                        </div>
+                    </div>
+                    <hr>
+                </section>
+
+
+
+                <!--- <div class="nev">
                     <div class="belsonev">
                         <h1>Polar Design</h1>
                         <p>Lorem ipsum dolor sit amet   </p>
 
                     </div>
                 </div>
-                <div class="sectionjelzo">
+
+
+
+
+               <div class="sectionjelzo">
                     <div class="sectionbelso">
                             Projektek
                     </div>
                 </div>
-                <hr id="lehuzo">
+
+
+
+                 <hr id="lehuzo">
                 <div id="projektcontainer">
                     <div class="projektbelso">
                         <div class="projektflex">
@@ -103,7 +137,7 @@
 
                         </div>
                     </div>
-                </div>
+                </div> -->
             </div>
                 
         </div>

@@ -16,6 +16,7 @@
 
     <!-- Javascript -->
     <script src="{% static 'js/projekt.js' %}"></script>
+    <script src="{% static 'js/global.js' %}"></script>
     <script src="{% static 'ckeditor/build/ckeditor.js' %}"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,8 +37,7 @@
         {% csrf_token %} 
         <nav>
             <div id="navleft">
-                <img src="https://dieselpunkcore.com/wp-content/uploads/2014/06/logo-placeholder.png" alt="" id="logo">
-                <div style="margin:auto">Polar Design</div>
+                <div>Polar Design</div>
             </div>
             <div id="navdiv">
                 <ul id="nav_ul">
@@ -49,11 +49,6 @@
                     <li class="nav_li"><a href="{{ domain }}/admin">Admin</a></li>
                     {% endif %}
                 </ul>
-            </div>
-            <div id="navright">
-                {% if user.is_staff %}
-                <span> Üdv <a href="{{ domain }}/profil"> {{request.user}}</span>!</a>
-                {% endif %}
             </div>
         </nav>
         
@@ -80,13 +75,13 @@
                                     .create(document.querySelector('#editor'))
                                     .then(editor => {
                                         theEditor = editor;
-                                        theEditor.setData("{{projekt.leiras|safe}}");
+                                        theEditor.setData('{{projekt.leiras|safe}}');
+                                        
                                     })
                                     .catch(error => {
                                         console.error(error);
                                     });
-                                    function getDataFromTheEditor() 
-                                    {
+                                    function getDataFromTheEditor(){
                                         return theEditor.getData();
                                     }
 

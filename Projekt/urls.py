@@ -15,14 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from APP.views import home_view, login_view, logout_view, staff_view, profile_view, projekt_view
+from APP.views import home_view, login_view, logout_view, staff_view, profile_view, projekt_view, portfolio_view
 
 urlpatterns = [
     path('admin_django/', admin.site.urls),
     path('', home_view, name="home"),
     path('login/',login_view, name="login"),
     path('logout/',logout_view, name="logout"),
-    path('szolgaltatasok/',home_view, name="szolgaltatasok"),
+    path('portfolio/',portfolio_view, name="portfolio"),
     path('rolunk/',home_view, name="rolunk"),
     path('kapcsolat/',home_view, name="kapcsolat"),
     path('admin/',staff_view, name="admin"),

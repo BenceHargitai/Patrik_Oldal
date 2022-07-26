@@ -1,0 +1,56 @@
+{% load static %}
+{% load filter %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Document</title>
+
+       <!-- Jquery -->
+       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+       <!-- CSS -->
+       <link rel="stylesheet" href="{% static 'css/main.css' %}" />   
+
+       <!-- Javascript -->
+    <script src="{% static 'js/global.js' %}"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand&family=Red+Hat+Display:wght@300;400&display=swap" rel="stylesheet"
+        
+</head>
+<body>
+    <div id="wrapper">
+        {% csrf_token %} 
+        <nav>
+            <div id="navleft">
+                <div>Polar Design</div>
+            </div>
+            <div id="navdiv">
+                <ul id="nav_ul">
+                    <li class="nav_li"><a href="{{ domain }}/">Főoldal</a></li>
+                    <li class="nav_li"><a href="{{ domain }}/">Portfolio</a></li>
+                    <li class="nav_li"><a href="{{ domain }}/">Szolgáltatások</a></li>
+                    <li class="nav_li"><a href="{{ domain }}/">Kapcsolat</a></li>
+                    {% if user.is_staff %}
+                    <li class="nav_li"><a href="{{ domain }}/admin">Admin</a></li>
+                    {% endif %}
+                    
+                </ul>
+            </div>
+        </nav>
+        <div id="main">
+
+            <div class="inner">
+
+
+
+            </div>
+                
+        </div>
+    </div>
+</body>
+</html>

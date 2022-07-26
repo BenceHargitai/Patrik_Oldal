@@ -6,6 +6,18 @@ from django.shortcuts import render
 from ckeditor.fields import RichTextField
 # Create your models here.
 
+class Fooldal(models.Model):
+    kategoria = models.CharField(max_length=30)
+    text = RichTextField(null=True)
+    sorszam = models.IntegerField(unique=True)
+
+    class Meta:
+        verbose_name = ("Fooldal")
+        verbose_name_plural = ("Fooldal")
+
+    def __str__(self):
+        return f'{self.sorszam} - {self.kategoria}'
+
 class Projekt(models.Model):
     id = models.IntegerField(auto_created=True,primary_key=True, editable=False)
     név = models.CharField(max_length=30)

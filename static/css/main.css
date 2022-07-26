@@ -1,8 +1,29 @@
 @font-face {
-    font-family: 'Avenir';
-    src: local('Avenir'),
-         url('../fonts/Avenir.woff');
+    font-family: 'AvenirBook';
+    src: url('../fonts/AvenirLTProBook.otf') format("opentype");
   }
+@font-face {
+    font-family: 'AvenirLight';
+    src: url('../fonts/AvenirLTProLight.otf') format("opentype");
+}
+@font-face {
+    font-family: 'AvenirMedium';
+    src: url('../fonts/AvenirLTProMedium.otf') format("opentype");
+}
+
+@font-face {
+    font-family: 'RoganLight';
+    src: url('../fonts/Rogan-Light.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'RoganMedium';
+    src: url('../fonts/Rogan-Medium.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'RoganRegular';
+    src: url('../fonts/Rogan-Regular.ttf') format('truetype');
+}
+
 body {
     line-height: 1.0;
     min-height: 100vh;
@@ -10,9 +31,12 @@ body {
     overflow-x: hidden;
     word-wrap: break-word;
     margin: 0px;
+    font-family: 'RoganRegular';
+   
+
 }
-body,nav{
-    font-family: 'Avenir';
+nav{
+    font-family: 'AvenirLight';
 }
 ol, ul {
     list-style: none;
@@ -36,6 +60,51 @@ a{
     position: relative;
     z-index: 2;
 }
+.scrolled{
+    position: fixed;
+    z-index: 25;
+    top: 21px;
+    height: 69px;
+    border-radius: 20px;
+    font-size: 12px!important;
+    box-shadow: rgb(0 0 0 / 8%) 0px 10px 20px 0px;
+    width: 70%;
+
+}
+.scrolled div div{
+    font-size: 21px!important;
+    color: #2e2d2d;
+}
+.little{
+    padding-top: 100px!important;
+    margin-top: -35px;
+}
+.nav_li a:hover::before,.nav_li a:hover::after{
+    opacity: 1;
+    width: 100%;
+}
+.current a::after{
+    opacity: 1!important;
+    width: 100%!important;
+}
+.nav_li a::before, .nav_li a::after{
+    position: absolute;
+    opacity: 0;
+    width: 0%;
+    height: 1px;
+    content: '';
+    background: #7e7e7e;
+    transition: all 0.3s;
+}
+.nav_li a::before{
+    left: 0px;
+    top: -3px;
+}
+.nav_li a::after{
+    right: 0px;
+    bottom: -3px;
+}
+
 #main{
     align-items: center;
     display: flex;
@@ -55,7 +124,8 @@ a{
     width: 75rem;
     z-index: 1;
     padding: 4rem;
-    padding-top: 110px;
+    padding-top: 0px;
+    
 }
 #image{
     border-radius: 0 !important;
@@ -76,31 +146,38 @@ a{
 }
 
 nav{
-    height: 110px;
+    height: 130px;
     width: 100%;
     color: black;
-    background-color: white;
-    position: fixed;
+    background-color: #ffffffd4;
     z-index: 10;
     display: grid;
-    grid-template-columns: 20% 80%;
+    grid-template-columns: 35% 65%;
+    backdrop-filter: blur(4px);
+    transition: width 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),background-color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),color 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),padding 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),-webkit-box-shadow 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94),-webkit-transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 #navleft, #navright{
     display: flex;
     flex-direction: row;
 }
-#navleft{
-    margin-left: auto;
-}
 #navleft div{
-    font-size: 28px;
+    font-size: 24px;
     text-transform: uppercase;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 54px;
+    font-family: 'AvenirMedium';
+    transition: all 1s ease;
+}
+#navleft div:hover{
+    color: black;
+    cursor: pointer;
 }
 #navdiv{
     display: flex;
     flex-direction: column;
     height: 100%;
-    margin-right: 10px;
+    margin-right: 18px;
     margin-left: auto;
 }
 #nav_ul{
@@ -120,8 +197,64 @@ nav{
     list-style-type: none;
     float: left;
     margin: auto;
-    padding: 0 10px;
+    margin-right: 10px;
 }
+section{
+    margin-top: 48px;
+    letter-spacing: 1.2px;
+}
+.section_cim h1{
+    text-transform: uppercase;
+    color: rgb(27, 27, 27);
+    font-size: 25px;
+    font-family: 'Red Hat Display', sans-serif;
+    font-weight: 400;
+}
+.section_belso{
+    margin-top: 35px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.section_belso_belso{
+    width: 650px;
+}
+section h2{
+    font-weight: 400!important;
+
+}
+.section_belso_szoveg{
+    color: #6c6f73;
+    line-height: 1.3;
+    margin-bottom: 50px;
+}
+
+section hr{
+    border: 0;
+    margin: 0;
+    width: 100%;
+    border-top: 1px solid #d7cdcd;
+    color: rgb(27, 27, 27);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .nev{
     height: 250px;
@@ -152,10 +285,6 @@ nav{
     align-items: center;
     background: #2b2b2b;
 }
-hr{
-    border: 0;
-    margin: 0;
-}
 
 #lehuzo::before{
     height: 8rem;
@@ -180,113 +309,6 @@ hr{
     padding: 3rem;
     
 }
-.grid60_40:hover, .grid40_60:hover
-{
-    cursor: pointer;
-}
-.grid60_40 img{
-    height: auto;
-    max-height: 16rem;
-    object-fit: cover;
-    width: 100%;
-    object-position: center;
-    border-radius: 0.375rem;
-    
-}
-#grid{
-    display: grid;
-    grid-template-columns: 50% 50%;
-}
-#grid img
-{
-    height: auto;
-    max-height: 18rem;
-    object-fit: cover;
-    width: 100%;
-    object-position: center;
-    border-radius: 0.375rem;
-}
-.kepitem{
-    overflow: hidden;
-    border-radius: 0.375rem;
-}
-
-.keptarto{
-    height: 350px;
-    max-height: 18rem;
-    object-fit: cover;
-    width: 100%;
-    background-position: center;
-    border-radius: 0.375rem;
-    background-size: cover;
-}
-.kepitem:hover{
-    transform: scale(1.03);
-    cursor: pointer;
-}
-.kepitem:hover .desc,
-.kepitem .desc {
-  opacity: 1;
-}
-
-.kepitem .desc {
-    opacity: 0.01;
-    font-size: 1rem;
-    height: 100%;
-    transition: all 0.5s ease;
-    background: rgba(0, 0, 0, 0.7);
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 22px;
-  }
-.private{
-    filter: grayscale(1);
-
-}
-.kepnev{
-    margin: auto;
-    height: 100%;
-    width: 100%;
-
-}
-
-.grid40_60 img{
-    height: auto;
-    max-height: 16rem;
-    object-fit: cover;
-    width: 100%;
-    object-position: center;
-    border-radius: 0.375rem;
-}
-
-.kepitem{
-    margin-left: 10px;
-    margin-right: 10px;
-}
-.projektflex ul li{
-    margin-bottom: 20px;
-}
-.grid60_40{
-    display: grid;
-    grid-template-columns: 70% 30%;
-}
-.grid60_40 .leiras{
-    padding-left: 10px;
-    color: #ffdead;
-}
-.grid40_60{
-    display: grid;
-    grid-template-columns: 30% 70%;
-}
-.grid40_60 .leiras{
-    color: #de9693;
-    padding-right: 10px;
-}
 h2{
-    margin-top: 0px;
-}
-#logo{
-    width: 60px;
+    margin-top: 0;
 }

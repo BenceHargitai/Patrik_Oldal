@@ -5,19 +5,18 @@ from shutil import unregister_unpack_format
 from wsgiref.util import request_uri
 from django.shortcuts import render, redirect
 from django.urls import is_valid_path
-from .models import Projekt, Kapcsolo, Kepek
+from .models import Projekt, Kapcsolo, Fooldal
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.contrib.admin.views.decorators import staff_member_required
 from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
 from .forms import EditForm
-import time
 
 
 # Create your views here.
 def home_view(request, *args, **kwargs):
-    projects =Projekt.objects.all()
-    return render(request, "home.html", {'projects' : projects}) 
+    topics = Fooldal.objects.all().order_by("sorszam")
+    return render(request, "home.html", {'topics' : topics}) 
 
 
 def login_view(request, *args, **kwargs):
@@ -89,3 +88,6 @@ def projekt_view(request:HttpRequest, név:str) -> HttpResponse:
 
     return render(request, template, context)
 
+def portfolio_view(request):
+    projects =Projekt.objects.all()
+    return render(request, 'portfolio.html', {'projects' : projects}) 
