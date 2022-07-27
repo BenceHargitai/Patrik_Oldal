@@ -23,6 +23,36 @@
     font-family: 'RoganRegular';
     src: url('../fonts/Rogan-Regular.ttf') format('truetype');
 }
+/* body {
+    animation: fadeInAnimation ease 2s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+} */
+.transition-1 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 101;
+    background-color: white ;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.5s ease-out;
+  }
+  
+  .transition-1.is-active {
+    pointer-events: all;
+    opacity: 1;
+  }
 
 body {
     line-height: 1.0;
@@ -197,7 +227,7 @@ nav{
     list-style-type: none;
     float: left;
     margin: auto;
-    margin-right: 10px;
+    margin-right: 23px;
 }
 section{
     margin-top: 48px;
@@ -211,34 +241,38 @@ section{
     font-weight: 400;
 }
 .section_belso{
-    margin-top: 35px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    margin-top: 72px;
+    display: grid;
+    grid-template-columns: 30% 70%;
 }
 .section_belso_belso{
     width: 650px;
+    display: flex;
+    flex-direction: column;
+    justify-self: end;
+    text-align: left;
+}
+.section_belso_kep div img{
+    width: 400px;
+    border-radius: 0.375rem;
 }
 section h2{
     font-weight: 400!important;
 
 }
 .section_belso_szoveg{
-    color: #6c6f73;
+    color: #3d3f40;
     line-height: 1.3;
     margin-bottom: 50px;
 }
 
-section hr{
+section hr, .inner hr{
     border: 0;
     margin: 0;
     width: 100%;
     border-top: 1px solid #d7cdcd;
     color: rgb(27, 27, 27);
 }
-
-
-
 
 
 
