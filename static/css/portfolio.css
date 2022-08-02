@@ -1,7 +1,7 @@
 .portfolio_inner{
     width:unset;
     padding: 2rem;
-    padding-top: 0rem;
+    padding-top: 130px;
 }
     
 .imageholder img{
@@ -14,6 +14,9 @@
     padding-left: 10px;
     padding-right: 10px;
     padding-bottom: 70px;
+}
+.imageholder:hover{
+    transform: scale(1.03);
 }
 hr{
     margin-bottom: 35px!important;
@@ -47,3 +50,5 @@ section{
 .clickzone{
     height: 100%;
 }
+
+
